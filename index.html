@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HOSSIFY!!1</title>
+	<style>
+		input, textarea {
+			width: 100%;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			box-sizing: border-box;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+		button {
+			padding: 10px;
+			border-radius: 4px;
+			background-color: #4CAF50;
+			color: white;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+	<script>
+		function modifyText() {
+			const textInput = document.getElementById('text-input');
+			let text = textInput.value;
+			text = text.toUpperCase().replace(/\bS\b/g, (match) => {
+				if (Math.floor(Math.random() * 4) === 0) { // 1 in 4 chance of changing S to Z
+					return 'Z';
+				} else {
+					return match;
+				}
+			});
+			text = text.replace(/\.(\s|$)/g, (match) => {
+				const randNum = Math.floor(Math.random() * 2) + 1;
+				return randNum === 1 ? '1!!1' : '!!1';
+			});
+			text = text.replace(/\bYes\b/g, "HE'LL YEAH");
+			text = text.replace(/\bNo\b/g, "HE'LL NAW");
+			text = text.replace(/'/g, '');
+			text = text.replace(/\bI\b/g, "Ah");
+			text = text.replace(/\byou\b/g, "y'all");
+			text = text.toUpperCase();
+			const endings = ['GOBLESS!!11', 'TURNP2024!!1', 'GOBLESSSS!!!1'];
+			const randomIndex = Math.floor(Math.random() * endings.length);
+			text += endings[randomIndex];
+			document.getElementById('output-text').value = text;
+		}
+
+		function copyText() {
+			const outputText = document.getElementById('output-text');
+			outputText.select();
+			document.execCommand('copy');
+			alert('Copied to clipboard!');
+		}
+	</script>
+</head>
+<body>
+	<h1>HOSSIFY!!1</h1>
+	<label for="text-input">Enter some text:</label>
+	<input type="text" id="text-input" name="text" rows="5">
+	<button type="button" onclick="modifyText()">HOSSIFY!!1</button>
+	<br><br>
+	<label for="output-text">Modified text:</label>
+	<textarea id="output-text" name="output" rows="5"></textarea>
+	<br>
+	<button type="button" onclick="copyText()">Copy to clipboard</button>
+</body>
+</html>
